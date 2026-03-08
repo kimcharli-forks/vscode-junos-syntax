@@ -1,0 +1,9 @@
+.vscode/
+.github/
+docs/
+**/*.md
+!README.md
+vsc-extension-quickstart.md
+.gitignore
+.gitattributes
+syntaxes/Junos.tmLanguage

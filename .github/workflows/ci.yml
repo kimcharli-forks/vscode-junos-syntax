@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  validate:
+    name: Validate
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate package.json
+        run: node -e "JSON.parse(require('fs').readFileSync('package.json','utf8')); console.log('package.json OK')"
+
+      - name: Validate language-configuration.json
+        run: node -e "JSON.parse(require('fs').readFileSync('language-configuration.json','utf8')); console.log('language-configuration.json OK')"
+
+      - name: Validate grammar JSON
+        run: node -e "JSON.parse(require('fs').readFileSync('syntaxes/Junos.tmLanguage.json','utf8')); console.log('Junos.tmLanguage.json OK')"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install vsce
+        run: npm install -g @vscode/vsce
+
+      - name: Package extension (dry run)
+        run: vsce package --no-dependencies 2>&1 | tail -5

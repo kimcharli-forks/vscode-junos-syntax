@@ -6,7 +6,7 @@
     "publisher": "jamiewoodio",
     "icon": "images/junos.png",
     "engines": {
-        "vscode": "^1.5.0"
+        "vscode": "^1.75.0"
     },
     "repository": {
         "type": "git",
@@ -24,7 +24,7 @@
                     "junos"
                 ],
                 "extensions": [
-                    ".conf",
+                    ".junos",
                     ".conf.1",
                     ".conf.2",
                     ".conf.3",
@@ -82,7 +82,7 @@
             {
                 "language": "junos",
                 "scopeName": "text.junos",
-                "path": "./syntaxes/Junos.tmLanguage"
+                "path": "./syntaxes/Junos.tmLanguage.json"
             }
         ]
     }
